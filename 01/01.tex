@@ -6,9 +6,14 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsmath}
+
+% for latex output of pandas
+\usepackage{booktabs}
 
 \begin{document}
-    \title{Exercise No. }
+    \title{Exercise No. 1}
     \author{David Bubeck, Pascal Becht, Patrick Nisbl\`e}
     \maketitle
     
@@ -25,11 +30,32 @@
         stringstyle=\color{orange}
     }
 
-    
+    \newpage
     \section*{2 - Numerical Integration}
+    \subsection*{a)}
     
     \lstinputlisting[language=Python, 
                      caption={
                         h
-                     }]{01-2.py}
+                     }]{01-2a.py}
+    \begin{figure}[H]
+        \includegraphics[width=.7\paperwidth]{01-2a}
+        \caption{h}
+    \end{figure}
+
+    \newpage
+    \subsection*{b)}
+    
+    \lstinputlisting[lastline=25]{01-2b.py}w2
+    \begin{figure}[H]
+        \centering
+        \input{01-2b.tex}    
+    \end{figure}
+
+    \newpage
+    \subsection*{c)}
+    
+    
+    
+    
 \end{document}
