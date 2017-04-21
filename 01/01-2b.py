@@ -25,5 +25,5 @@ if __name__ == '__main__':
     print(ydata)
     
     f = open("01-2b.tex", 'w')
-    f.write(pd.DataFrame(np.array([ndata, ydata]).T, columns=['n',"y_n"]).to_latex())
+    f.write(pd.DataFrame(np.array([ndata, ydata]).T, columns=['n',"$y_n(" +str(a)+ ")$"]).to_latex(escape=False))
     f.close()
