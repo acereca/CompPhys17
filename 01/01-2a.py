@@ -14,6 +14,8 @@ plt.xlabel('x')
 plt.ylabel('y')
 
 for it in n:
-    plt.plot(xdata, y(xdata, a, it))
+    plt.plot(xdata, y(xdata, a, it), label="n={}".format(it))
+
+plt.legend()
 
 plt.savefig('01-2a.png')

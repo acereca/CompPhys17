@@ -21,7 +21,9 @@
         language=Python,
         backgroundcolor=\color{gray!10},
         numbers=left,
-        captionpos=b,
+        captionpos=t,
+        breaklines=true,
+        frame=l,
         xleftmargin=\parindent,
         basicstyle=\footnotesize\sffamily,
         keywordstyle=\bfseries\color{green!40!black},
@@ -32,30 +34,63 @@
 
     \newpage
     \section*{2 - Numerical Integration}
-    \subsection*{a)}
     
-    \lstinputlisting[language=Python,
-                     lastline=17, 
-                     caption={
-                        h
-                     }]{01-2a.py}
+    We are to use 
+    \begin{align}
+        y_n(a)
+            =\int_{0}^{1}\left(\frac{x^n}{x-a}\right)d\text x
+            =\frac 1 n -a\cdot y_{n-1}(a)
+    \end{align}
+    for the following tasks
+    \subsection*{a)}
+    Plotting the Integrand for $n \in \{1,5,10,20,30,50\}$ and $x\in [0,1]$
+    \begin{figure}[H]
+        \lstinputlisting[language=Python,
+        caption={
+            01-2a.py
+        },
+        lastline=17]{01-2a.py}        
+    \end{figure}
+    
     \begin{figure}[H]
         \includegraphics[width=.7\paperwidth]{01-2a}
-        \caption{h}
+        \caption{plotted integrand for given n and x interval}
     \end{figure}
 
     \newpage
     \subsection*{b)}
-    
-    \lstinputlisting[lastline=25]{01-2b.py}w2
+    Now for the Integration steps: iterate over a list between $n_0$ and $n_1$ starting at the lower, using a given $a$ and $y_0$  
+    \lstinputlisting[
+        lastline=50,
+        caption={
+            01-2b.py
+        }]{01-2b.py}
     \begin{figure}[H]
         \centering
         \input{01-2b.tex}    
+        \caption{output of 01-2b.py}
     \end{figure}
 
     \newpage
     \subsection*{c)}
+    repeat b) with given values
     
+    \lstinputlisting[
+        caption={
+            01-2c.py
+        }
+    ]{01-2c.py}
+    
+    \begin{figure}[H]
+        \centering
+        \input{01-2c.tex}
+        \caption{output of 01-2c.py}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.8\paperwidth]{01-2c}
+    \end{figure}
     
     
     
