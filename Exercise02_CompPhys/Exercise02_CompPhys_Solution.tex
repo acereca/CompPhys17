@@ -54,63 +54,31 @@
     		
     		
     		Now we plot a circular orbit with the error in energy in a 
-    		additional plot. The values that were used are given in the code.
+    		additional plot. The values that were used are given in the code and We repeat the calculation for two more different initial velocities.
     		
     		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
+        		\lstinputlisting[
+        			language=Python,
         			caption={Exercise02a.py},
-        			firstnumber=30, firstline=30,
-        			lastline=51]{Exercise02a.py}   
+        			firstnumber=30,
+        			firstline=30]
+        			{Exercise02a.py}   
     		\end{figure}
     		
     		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_1.png}
+    			\centering
+    			\includegraphics[height=.33\paperheight]{fig_a1.png}
     			\caption{First orbit with forward Euler algorithm}
     		\end{figure}
     		
     		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_1_2.png}
+    			\centering
+    			\includegraphics[height=.33\paperheight]{fig_a2.png}
     			\caption{First orbit energy error with forward Euler algorithm}
     		\end{figure}
     		
     		
-    		We repeat the calculation for two more different initial velocities.
     		
-    		For the second orbit we chose:
-    		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
-        			caption={Exercise02a.py},
-        			firstnumber=54, firstline=54,
-        			lastline=74]{Exercise02a.py}   
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_2.png}
-    			\caption{Second orbit with forward Euler algorithm}
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_2_2.png}
-    			\caption{Second orbit energy error with forward Euler algorithm}
-    		\end{figure}
-    		
-    		For the third orbit we chose:
-    		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
-        			caption={Exercise02a.py},
-        			firstnumber=77, firstline=77,
-        			lastline=97]{Exercise02a.py}   
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_3.png}
-    			\caption{Third orbit with forward Euler algorithm}
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_3_2.png}
-    			\caption{Third orbit energy error with forward Euler algorithm}
-    		\end{figure}
     		
     	\newpage
     		
@@ -133,74 +101,32 @@
     		
     		
     		Now we plot a circular orbit with the error in energy in a 
-    		additional plot. The values that were used are given in the code. To 
-    		be precise we going to use the same values as before.
+    		additional plot. The values that were used are given in the code. To be precise we going to use the same values as before and we also repeat the calculation for two more different initial velocities.
     		
     		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
+        		\lstinputlisting[
+        			language=Python,
         			caption={Exercise02b.py},
-        			firstnumber=34, firstline=34,
-        			lastline=55]{Exercise02b.py}   
+        			firstnumber=34, 
+        			firstline=34
+        		]{Exercise02b.py}   
     		\end{figure}
     		
     		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_1.png}
+    			\centering
+    			\includegraphics[height=.33\paperheight]{fig_b1.png}
     			\caption{First orbit with leapfrog algorithm}
     		\end{figure}
     		
     		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_1_2.png}
+    			\centering
+    			\includegraphics[height=.33\paperheight]{fig_b2.png}
     			\caption{First orbit energy error with leapfrog algorithm}
     		\end{figure}
     		
-    		
-    		We repeat the calculation for two more different initial velocities.
-    		
-    		For the second orbit we chose:
-    		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
-        			caption={Exercise02b.py},
-        			firstnumber=58, firstline=58,
-        			lastline=78]{Exercise02b.py}   
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_2.png}
-    			\caption{Second orbit with leapfrog algorithm}
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_2_2.png}
-    			\caption{Second orbit energy error with leapfrog algorithm}
-    		\end{figure}
-    		
-    		For the third orbit we chose:
-    		\begin{figure}[H]
-        		\lstinputlisting[language=Python,
-        			caption={Exercise02b.py},
-        			firstnumber=81, firstline=81,
-        			lastline=101]{Exercise02b.py}   
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_3.png}
-    			\caption{Third orbit with leapfrog algorithm}
-    		\end{figure}
-    		
-    		\begin{figure}[H]
-    			\includegraphics[width=.5\paperwidth]{figure_leap_3_2.png}
-    			\caption{Third orbit energy error with leapfrog algorithm}
-    		\end{figure}
-    		
-    		
-    		The errors decreas with decreasing time steps for both integration 
-    		schemes. For the euler algorithm we expect a decreasing with $O(h^2)
-    		$, for the Leapfrog algorithm $O(h^3)$. This is what we get. The 
-    		errors of the Leapfrog integration are much smaller than those of 
-    		the Euler integration. However, the slope of the errorr - curve is 
-    		steeper which we also expect. Another difference between the error - 
-    		plots, of the two integration variations, is, that for the Euler 
-    		integration we get straight lines whereas for the Leapfrog 
-    		integration the errors seem to scatter around the expected line. 
+    		The errors decrease with decreasing time steps for both integration 
+    		schemes. For the Euler algorithm we expect a drop with $O(h^2)
+    		$, for the Leapfrog algorithm $O(h^3)$. This is also what we can observe. The errors of the Leapfrog integration are much smaller than those of the Euler integration. However, the slope of the error-curve is 
+    		steeper which we also expected. Another difference between the error-plots, of the two integration variants is, that for the Euler integration we get straight lines whereas for the Leapfrog integration the errors seem to scatter around the expected line. 
 
 \end{document}

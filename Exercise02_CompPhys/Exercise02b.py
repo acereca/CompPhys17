@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+plt.figure(figsize=(8,6))
 
 
 #function that integrates the 2 - body - problem using the leapfrog
@@ -33,69 +34,33 @@ def leapfrog(v_0, h, s_0 = np.array([0, 1])):
 
 #for the given initial values the eccentricity is zero,
 #therefore the orbit is circular
-S, V, E = leapfrog(np.array([1, 0]), 0.0001)
+orbits = [1, 0],[1.3,0],[.8,0]
 
-plt.figure(figsize = (6.5, 10))
-plt.plot(S[:, 0], S[:, 1])
+for o in orbits:
+    S, V, E = leapfrog(np.array(o), 0.0001)
+    plt.plot(S[:, 0], S[:, 1], label="$v_{init}$=" + "{}".format(o[0]))
+
 plt.xlabel('x')
 plt.ylabel('y')
-plt.show()
+plt.legend()
+plt.axis('equal')
+plt.savefig('fig_b1.png')
+plt.clf()
+# plt.cla()
+# plt.close()
 
-energyerror = []
-H = [0.01, 0.001, 0.0001, 0.0001, 0.00001]
-for h in H:
-    S, V, E = leapfrog(np.array([1, 0]), h)
-    energyerror.append((abs(E[-1] - E[0])) / (abs(E[0])))
+for o in orbits:
+    energyerror = []
+    H = [0.01, 0.001, 0.0001, 0.0001, 0.00001]
+    for h in H:
+        S, V, E = leapfrog(np.array(o), h)
+        energyerror.append((abs(E[-1] - E[0])) / (abs(E[0])))
 
-plt.plot(H, energyerror)
+    plt.plot(H, energyerror, label="$v_{init}$=" + "{}".format(o[0]))
+
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Stepsize h')
 plt.ylabel('error in energy')
-plt.show()
-
-
-#use different initial velocity to achieve another orbit
-S, V, E = leapfrog(np.array([1.3, 0]), 0.0001)
-
-plt.figure(figsize = (6.5, 10))
-plt.plot(S[:, 0], S[:, 1])
-plt.xlabel('x')
-plt.ylabel('y')
-plt.show()
-
-energyerror = []
-H = [0.01, 0.001, 0.0001, 0.0001, 0.00001]
-for h in H:
-    S, V, E = leapfrog(np.array([1.3, 0]), h)
-    energyerror.append((abs(E[-1] - E[0])) / (abs(E[0])))
-
-plt.plot(H, energyerror)
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel('stepsize h')
-plt.ylabel('error in energy')
-plt.show()
-
-
-#do the same for the third orbit with again another initial velocity
-S, V, E = leapfrog(np.array([0.8, 0]), 0.001)
-
-plt.figure(figsize = (6.5, 10))
-plt.plot(S[:, 0], S[:, 1])
-plt.xlabel('x')
-plt.ylabel('y')
-plt.show()
-
-energyerror = []
-H = [0.01, 0.001, 0.0001, 0.0001, 0.00001]
-for h in H:
-    S, V, E = leapfrog(np.array([0.8, 0]), h)
-    energyerror.append((abs(E[-1] - E[0])) / (abs(E[0])))
-
-plt.plot(H, energyerror)
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel('stepsize h')
-plt.ylabel('error in energy')
-plt.show()
+plt.legend()
+plt.savefig('fig_b2.png')
