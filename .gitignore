@@ -1,3 +1,11 @@
+# latex
 *.synctex.gz
 *.log
 *.aux
+
+# working
+self/
+/.gtm/
+
+# animations
+*.mp4
