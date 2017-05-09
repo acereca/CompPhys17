@@ -2,6 +2,7 @@ from rk4 import rKN
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as anim
+import matplotlib.patches as pat
 
 nsteps = 10000
 tmax = 1
@@ -75,22 +76,28 @@ line1, = ax.plot([], [], color='r')
 line2, = ax.plot([], [], color='g')
 line3, = ax.plot([], [], color='b')
 
+vec1 = pat.Arrow(0,0,0,0)
+
 def init():
     line1.set_data([],[])
     line2.set_data([],[])
     line3.set_data([],[])
+    ax.add_patch(vec1)
 
-    return line1,line2,line3
+    return line1,line2,line3,vec1
 
-def animate(i):
+def animate(i, debug_patch):
     s = 50
+
     line1.set_data(xlist[:i*s,0],xlist[:i*s,1])
     line2.set_data(xlist[:i*s,4],xlist[:i*s,5])
     line3.set_data(xlist[:i*s,8],xlist[:i*s,9])
+    debug_patch.remove()
+    debug_patch = pat.Arrow(xlist[i*s,4],xlist[i*s,5],xlist[i*s,6]/2,xlist[i*s,7]/2, width=.05)
+    ax.add_patch(debug_patch)
+    return line1,line2,line3,vec1
 
-    return line1,line2,line3
-
-ani = anim.FuncAnimation(fig, animate, init_func=init,
+ani = anim.FuncAnimation(fig, lambda i:animate(i, vec1), init_func=init,
                                    frames=int((nsteps+1)/50), interval=1, blit=True)
 
 ani.save('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
