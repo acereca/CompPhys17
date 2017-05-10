@@ -20,8 +20,8 @@ def grav_acc(
 def three_body_sim(
         nsteps: int = 100,
         tmax: float = 1,
-        init_val: np.ndarray(shape=(1,12))
-    ) -> np.ndarray(shape=(nsteps+1,12)):
+        init_val = np.ndarray(shape=(1,12))
+    ) -> np.ndarray:
 
     # where (y_1+4i,y_2+4i) initial x,y coords of m_i and
     # (y_3+4i,y_4+4i) the initial x,y velocity of m_i
@@ -77,5 +77,13 @@ if __name__=="__main__":
         .93240737,
         .86473146
     ]])
+    tmax = 2 # s
+    for stepsize in np.linspace(.01,.001, 3):
+        xlist = three_body_sim(int(tmax/stepsize),tmax,xinit)
+        print(xlist)
+        plt.plot(xlist[:,0],xlist[:,1],label = '$m_1, \Delta t={:.3f}$'.format(stepsize))
+        plt.plot(xlist[:,4],xlist[:,5],label = '$m_2, \Delta t={:.3f}$'.format(stepsize))
+        plt.plot(xlist[:,8],xlist[:,9],label = '$m_3, \Delta t={:.3f}$'.format(stepsize))
 
-    xlist = three_body_sim(400,4,xinit)
+    plt.legend()
+    plt.show()
