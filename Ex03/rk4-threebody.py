@@ -78,6 +78,9 @@ if __name__=="__main__":
         .86473146
     ]])
     tmax = 2 # s
+    plt.figure(figsize=(10.8,7.2))
+    plt.xlabel('x')
+    plt.ylabel('y')
     for stepsize in np.linspace(.01,.001, 3):
         xlist = three_body_sim(int(tmax/stepsize),tmax,xinit)
         print(xlist)
@@ -86,4 +89,5 @@ if __name__=="__main__":
         plt.plot(xlist[:,8],xlist[:,9],label = '$m_3, \Delta t={:.3f}$'.format(stepsize))
 
     plt.legend()
+    plt.savefig('3-21-plot.png', bbox_inches='tight')
     plt.show()
