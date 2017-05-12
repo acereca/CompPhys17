@@ -20,7 +20,8 @@ def grav_acc(
 def three_body_sim(
         nsteps: int = 100,
         tmax: float = 1,
-        init_val = np.ndarray(shape=(1,12))
+        init_val = np.ndarray(shape=(1,12)),
+        masses = [1,1,1]
     ) -> np.ndarray:
 
     # where (y_1+4i,y_2+4i) initial x,y coords of m_i and
@@ -32,9 +33,9 @@ def three_body_sim(
 
 
     # only dist dependent accelerations
-    a12 = lambda x: grav_acc(1,x[0],x[1],1,x[4],x[5])
-    a13 = lambda x: grav_acc(1,x[0],x[1],1,x[8],x[9])
-    a23 = lambda x: grav_acc(1,x[4],x[5],1,x[8],x[9])
+    a12 = lambda x: grav_acc(masses[0],x[0],x[1],masses[1],x[4],x[5])
+    a13 = lambda x: grav_acc(masses[0],x[0],x[1],masses[2],x[8],x[9])
+    a23 = lambda x: grav_acc(masses[1],x[4],x[5],masses[2],x[8],x[9])
 
     # system of linear equations for three body system
     fsys = [
