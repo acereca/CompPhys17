@@ -64,4 +64,5 @@ if __name__ == "__main__":
     point3, = ax.plot([], [], color='b', marker='.', markersize=6)
 
     animator = MplAnimator(fig, animate, nsteps+1, "rk4-anim", initialize = init)
+    MplAnimator()
     animator.start()

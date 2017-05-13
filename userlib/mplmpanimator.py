@@ -16,7 +16,11 @@ class MplAnimator(object):
                  filename: str,
                  fps: int = 60,
                  nproc: int = 4,
-                 initialize: Callable[[],None] = lambda: ""):
+                 initialize: Callable[[], None] = lambda: None):
+
+        """
+        Animator for Matplotlib.Pyplot using multiprocessing
+        """
 
         self.figure         = fig
         self.num_frames     = nframes
