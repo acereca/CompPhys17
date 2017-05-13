@@ -5,7 +5,10 @@
 
 # working
 self/
-/.gtm/
+.gtm/
+.idea/
+__pycache__/
+
 
 # animations
 #*.mp4
