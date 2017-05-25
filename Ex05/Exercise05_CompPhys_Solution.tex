@@ -1,0 +1,144 @@
+\documentclass[11pt, a4paper, reqno]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{libertine}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsmath}
+
+% for latex output of pandas
+\usepackage{booktabs}
+
+\begin{document}
+    \title{Exercise No. 5}
+    \author{David Bubeck, Pascal Becht, Patrick Nisbl\`e}
+    \maketitle
+    
+    \lstset{
+        language=Python,
+        backgroundcolor=\color{gray!10},
+        numbers=left,
+        captionpos=t,
+        breaklines=true,
+        frame=l,
+        xleftmargin=\parindent,
+        basicstyle=\footnotesize\sffamily,
+        keywordstyle=\bfseries\color{green!40!black},
+        commentstyle=\itshape\color{purple!40!black},
+        identifierstyle=\color{blue!60!black},
+        stringstyle=\color{orange}
+    }
+
+    \newpage
+    \section*{2 - Tridiagonal matrices}
+
+    	\subsection*{1)}
+			Due to the high amount of zeros in the matrix the Gaußian elimination 				can be simplifyed to
+			
+			\begin{align}
+				\mbox{for \, $i = 2 ... n$}
+				\begin{cases}
+					a_i = \frac{a_i}{b_{i-1}} \\
+					b_i = b_i - a_i \cdot c_{i-1} \\
+					r_i = r_i - a_i \cdot r_{i-1}
+				\end{cases}
+			\end{align}
+			
+			However, $b_1$ and $c_1$ will not be changed.
+    		
+
+		\subsection*{2)}
+			Now we can use the new found values of $b_i$ and $r_i$ to do a backward 			substitution. We start the process with the last row, by which the 					entry of the solution vector is 
+			
+			\begin{align}
+				x_n = \frac{r_n}{b_n}
+			\end{align}
+						
+			For the other entries we obtain with a recursion formula
+			
+			\begin{align}
+				x_i = \frac{r_i - c_i \cdot x_{i+1}}{b_i}
+			\end{align}			    		
+    	
+    	\subsection*{3)}
+    		To write the code we use the formula above and implement it as a 					numerical subroutine.
+    		
+    		\begin{figure}[H]
+        		\lstinputlisting[language=Python,
+        			caption={Exercise05.py},
+        			lastline=21]{Exercise05.py}        
+    		\end{figure}
+    	
+    	\subsection*{4)}
+    		To test the algorithm we set a matrix with the values to all $a = -1$, 				all $b = 2$, all $c = -1$ and all $r = 0.1$.
+    		
+    		\begin{figure}[H]
+        		\lstinputlisting[language=Python,
+        			caption={Exercise05.py}, firstline=24, firstnumber=24,
+        			lastline=44]{Exercise05.py}        
+    		\end{figure}
+    		
+    		For the vector $x$ we obtain
+    		
+    		\begin{align*}
+    			x =
+    			\begin{pmatrix}
+    				0.5 \\
+    				0.9 \\
+    				1.2 \\
+    				1.4 \\
+    				1.5 \\
+    				1.5 \\
+    				1.4 \\
+    				1.2 \\
+    				0.9 \\
+    				0.5 
+    			\end{pmatrix}
+    		\end{align*}
+  
+    	\subsection{5)}
+    		We put the solution back into the original matrix equation to check if 				the algorithm works correctly. Therefore we use the equations below for 			a numerical subroutine.
+    		
+    		\begin{align}
+    			a_1 \cdot x_n + b_1 \cdot x_1 + c_1 \cdot x_2 = r_1, \\
+					i = 2, ..., n-1 \;\;\;\;     			
+    			a_i \cdot x_{i-1} + b_i \cdot x_i + c_i \cdot x_{i+1} = r_i,\\
+    			a_n \cdot x_{n-1} + b_n \cdot x_n + c_n \cdot x_1 = r_n
+    		\end{align}
+    		
+    		\begin{figure}[H]
+        		\lstinputlisting[language=Python,
+        			caption={Exercise05.py}, firstline=46, firstnumber=46,
+        			lastline=53]{Exercise05.py}        
+    		\end{figure}
+  
+  			For the vector $r$ we obtain
+    		
+    		\begin{align*}
+    			R =
+    			\begin{pmatrix}
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 \\
+    				0.1 
+    			\end{pmatrix}
+    		\end{align*}
+  			
+  			We get the same solution we put into our algorithm, $R = r$, therefore 				is no deviation visible.
+    		
+    	
+
+  
+    	
+    		
+
+\end{document}
