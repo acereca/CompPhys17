@@ -1,25 +1,9 @@
 #! /usr/bin/python3
 
 import numpy as np
-import scipy.linalg as la
 
-def qr_decomp(mat: np.matrix):
-    mat_c = np.triu(mat)
-    i = 0
-
-    while not (mat_c == mat).all():
-        i += 1
-        q, r = np.linalg.qr(mat)
-        mat = np.dot(r,q)
-        mat_c = np.triu(mat)
-        #print('.')
-        if i%1000 == 0:
-            print(i)
-
-    print(i)
-    return mat
-
-for NP in np.arange(5, 16):
+Q4l = []
+for NP in np.arange(15, 31):
 
     # creating Q
     Q = np.diagflat([1.]*NP)
@@ -39,6 +23,23 @@ for NP in np.arange(5, 16):
     h0 = np.diagflat(np.arange(.5, NP+.5, 1))
     h = h0 + .1*Q4
 
-    # solving h for eigenvalues
-    h = qr_decomp(h)
-    print(NP, np.diagonal(h))
+    Q4l.append(Q4)
+
+import pandas as pd
+
+Q41 = pd.DataFrame(Q4l[0])
+
+f = open("q.tex", 'w')
+f.write(
+    pd.DataFrame(Q41).transpose().to_latex(escape=False, formatters=[lambda x: "{:.0f}".format(x)]*15)
+)
+f.close()
+
+
+Q42 = pd.DataFrame(Q4l[15])
+
+f = open("q2.tex", 'w')
+f.write(
+    pd.DataFrame(Q42).transpose().to_latex(escape=False, formatters=[lambda x: "{:.0f}".format(x)]*30)
+)
+f.close()

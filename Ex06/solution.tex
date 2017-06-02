@@ -1,0 +1,52 @@
+\documentclass[11pt, a4paper, reqno]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{libertine}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{pdflscape}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsmath}
+
+% for latex output of pandas
+\usepackage{booktabs}
+
+\begin{document}
+    \title{Exercise No. 6}
+    \author{David Bubeck, Pascal Becht, Patrick Nisbl\`e}
+    \maketitle
+    
+    \lstset{
+        language=Python,
+        backgroundcolor=\color{gray!10},
+        numbers=left,
+        captionpos=t,
+        breaklines=true,
+        frame=l,
+        xleftmargin=\parindent,
+        basicstyle=\footnotesize\sffamily,
+        keywordstyle=\bfseries\color{green!40!black},
+        commentstyle=\itshape\color{purple!40!black},
+        identifierstyle=\color{blue!60!black},
+        stringstyle=\color{orange}
+    }
+
+    \section*{Part 1: creating $Q^4$}
+        \begin{figure}[H]
+            \lstinputlisting{s6.py}
+        \end{figure}
+    
+    \begin{landscape}
+        \begin{figure}
+            \input{q.tex}
+            \caption{(rounded to int)}
+        \end{figure}
+        \begin{figure}
+            \scalebox{.8}{\input{q2.tex}}
+            \caption{(rounded to int)}
+        \end{figure}
+    \end{landscape}
+        
+\end{document}
