@@ -1,0 +1,58 @@
+\documentclass[11pt, a4paper, reqno]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{libertine}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+
+% for latex output of pandas
+\usepackage{booktabs}
+
+\begin{document}
+    \title{Exercise No. 11}
+    \author{David Bubeck, Pascal Becht, Patrick Nisbl\`e}
+    \maketitle
+
+    \lstset{
+        language=Python,
+        backgroundcolor=\color{gray!5},
+        numbers=left,
+        captionpos=t,
+        breaklines=true,
+        frame=l,
+        xleftmargin=\parindent,
+        basicstyle=\footnotesize\sffamily,
+        keywordstyle=\bfseries\color{green!40!black},
+        commentstyle=\itshape\color{purple!40!black},
+        identifierstyle=\color{blue!60!black},
+        stringstyle=\color{orange}
+    }
+
+    \section*{2 - Importance Sampling}
+   
+    	We should integrate the given integral with the Monte Carlo method.
+    	\begin{align}
+    		I = \frac{1}{\pi} \int_{-\infty}^{\infty} exp(-y_1^2 -y_2^2) \; dy_1 \; 			dy_2
+    	\end{align}
+    	
+    	Now, due to important sampling, we can make an approximation of our 				integral as a sum and make a Monte Carlo estimation of the expected values. 		We obtain for our integral:
+    	\begin{align*}
+    		I = \frac{1}{\pi} \frac{1}{n} \sum_{i = 0}^{n} f(y_1, y_2)
+    	\end{align*}
+    	Where $n$ is the sample random number. \newline
+    	Also we define a function $g(y_1, y_2) = \frac{f(y_1, y_2)}{p(y_1, y_2)}$ 			for the importance sampling, where $p(y_1, y_2)$ is a probability 					distribution function. Now we can check if our random values are in the 			given intervall. If it is the case the function $g(y_1, y_2)$ will return 			$1$ otherwise $-1$ to make a faster calculation. \newline
+    	With the code we evaluated the integral for a value $I = 7367.86152808$ for 		a sampling number of $n = 1000$ in the given interval $[-5, 5]$.
+     	
+     	\begin{figure}[H]
+     		\lstinputlisting[lastline=30]{exercise11_1.py}
+     	\end{figure}
+      
+		        
+\end{document}
